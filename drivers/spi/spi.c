@@ -1923,6 +1923,8 @@ int spi_setup(struct spi_device *spi)
 	if (spi->master->setup)
 		status = spi->master->setup(spi);
 
+	spi_set_cs(spi, false);
+
 	dev_dbg(&spi->dev, "setup mode %d, %s%s%s%s%u bits/w, %u Hz max --> %d\n",
 			(int) (spi->mode & (SPI_CPOL | SPI_CPHA)),
 			(spi->mode & SPI_CS_HIGH) ? "cs_high, " : "",
