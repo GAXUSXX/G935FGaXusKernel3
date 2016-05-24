@@ -22,3 +22,17 @@ build
 **.order
 *.o
 */*/*/*.o
+.config
+Module.symvers
+arch/arm64/boot/dtb/
+arch/arm64/include/generated/
+arch/arm64/kernel/asm-offsets.s
+arch/arm64/kernel/vdso/vdso.so
+arch/arm64/kernel/vdso/vdso.so.dbg
+arch/arm64/lib/lib.a
+include/config/
+include/generated/
+kernel/bounds.s
+lib/lib.a
+scripts/mod/devicetable-offsets.s
+usr/.initramfs_data.cpio.d
