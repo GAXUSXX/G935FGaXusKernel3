@@ -129,6 +129,12 @@ config CPU_FREQ_DEFAULT_GOV_BARRY_ALLEN
 	  loading your cpufreq low-level hardware driver, using the
 	  'barry_allen' governor for latency-sensitive workloads.
 
+config CPU_FREQ_DEFAULT_GOV_SMARTMAX
+              bool "smartmax"
+              select CPU_FREQ_GOV_SMARTMAX
+              help
+                Use the CPUFreq governor 'smartmax' as default.
+
 config CPU_FREQ_GOV_PERFORMANCE
 	tristate "'performance' governor"
 	help
@@ -231,6 +237,13 @@ config CPU_FREQ_GOV_CONSERVATIVE
 	  For details, take a look at linux/Documentation/cpu-freq.
 
 	  If in doubt, say N.
+
+config CPU_FREQ_GOV_SMARTMAX
+             tristate "'smartmax' cpufreq governor"
+             depends on CPU_FREQ
+             help
+               smartmax' - a "smart" optimized governor!
+               If in doubt, say N.
 
 config CPUFREQ_DT
 	tristate "Generic DT based cpufreq driver"
