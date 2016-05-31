@@ -26,6 +26,7 @@
 #include <soc/samsung/exynos-powermode.h>
 
 #include "pwrcal/pwrcal.h"
+#include "../../../kernel/time/tick-internal.h"
 
 #if defined(CONFIG_SEC_PM) && defined(CONFIG_MUIC_NOTIFIER)
 #include <linux/device.h>
