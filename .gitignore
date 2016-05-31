@@ -37,3 +37,12 @@ kernel/bounds.s
 lib/lib.a
 scripts/mod/devicetable-offsets.s
 usr/.initramfs_data.cpio.d
+builtime_bytes.bin
+builtime_bytes.txt
+fips_crypto_utils
+fips_fmp_utils
+kaslr_fips
+offsets_sizes_crypto.txt
+offsets_sizes_fmp.txt
+vmlinux.elf
+
