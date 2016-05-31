@@ -22,6 +22,7 @@ build
 **.order
 *.o
 */*/*/*.o
+*/*/*.o.d
 .config
 Module.symvers
 arch/arm64/boot/dtb/
