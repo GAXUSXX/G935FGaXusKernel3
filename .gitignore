@@ -45,4 +45,4 @@ kaslr_fips
 offsets_sizes_crypto.txt
 offsets_sizes_fmp.txt
 vmlinux.elf
-
+*/*/*/*.o.d
