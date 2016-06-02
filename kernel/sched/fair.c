@@ -5822,8 +5822,8 @@ select_task_rq_fair(struct task_struct *p, int prev_cpu, int sd_flag, int wake_f
 		}
 		/* while loop will break here if sd == NULL */
 	}
+unlock:
 	rcu_read_unlock();
-
 #ifdef CONFIG_SCHED_HMP
 	prev_cpu = task_cpu(p);
 
