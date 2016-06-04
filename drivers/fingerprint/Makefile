@@ -5,6 +5,7 @@
 # Each configuration option enables a list of files.
 
 ccflags-y := $(KBUILD_FP_SENSOR_CFLAGS)
+KBUILD_CFLAGS	+= -Wno-error=declaration-after-statement
 
 obj-$(CONFIG_SENSORS_FINGERPRINT_SYSFS)		+= fingerprint_sysfs.o
 obj-$(CONFIG_SENSORS_VFS7XXX)		+= vfs7xxx.o
