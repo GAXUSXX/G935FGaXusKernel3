@@ -67,6 +67,15 @@
 #error "Please define core voltage ranges for current SoC."
 #endif
 
+#ifdef CONFIG_SOC_EXYNOS8890
+#define CL0_MIN_FREQ		234000
+#define CL0_MAX_FREQ		1586000
+#define CL1_MIN_FREQ		416000
+#define CL1_MAX_FREQ		2600000
+#else
+#error "Please define core frequency ranges for current SoC."
+#endif
+
 #define VOLT_RANGE_STEP		25000
 #define CLUSTER_ID(cl)		(cl ? ID_CL1 : ID_CL0)
 
@@ -1256,6 +1265,7 @@ static struct notifier_block exynos_tmu_nb = {
 static int exynos_cpufreq_cpu_init(struct cpufreq_policy *policy)
 {
 	unsigned int cur = get_cur_cluster(policy->cpu);
+	int ret;
 
 	pr_debug("%s: cpu[%d]\n", __func__, policy->cpu);
 
@@ -1274,7 +1284,14 @@ static int exynos_cpufreq_cpu_init(struct cpufreq_policy *policy)
 		cpumask_copy(policy->related_cpus, &cluster_cpus[CL_ZERO]);
 	}
 
-	return cpufreq_frequency_table_cpuinfo(policy, exynos_info[cur]->freq_table);
+	ret = cpufreq_frequency_table_cpuinfo(policy, exynos_info[cur]->freq_table);
+	
+	if (!ret) {
+		policy->min = cur == CL_ONE ? CL1_MIN_FREQ : CL0_MIN_FREQ;
+		policy->max = cur == CL_ONE ? CL1_MAX_FREQ : CL0_MAX_FREQ;
+	}
+
+	return ret;
 }
 
 static struct cpufreq_driver exynos_driver = {
