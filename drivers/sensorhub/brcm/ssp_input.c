@@ -499,7 +499,7 @@ void report_grip_data(struct ssp_data *data, struct sensor_value *gripdata)
 			data->buf[GRIP_SENSOR].irq_stat + 1);
 	input_sync(data->grip_input_dev);
 
-	wake_lock_timeout(&data->ssp_wake_lock, 3 * HZ);
+	wake_lock_timeout(&data->ssp_wake_lock, 1 * HZ);
 }
 #endif
 
@@ -537,7 +537,7 @@ void report_temp_humidity_data(struct ssp_data *data,
 		data->buf[TEMPERATURE_HUMIDITY_SENSOR].y);
 	input_sync(data->temp_humi_input_dev);
 	if (data->buf[TEMPERATURE_HUMIDITY_SENSOR].z)
-		wake_lock_timeout(&data->ssp_wake_lock, 2 * HZ);
+		wake_lock_timeout(&data->ssp_wake_lock, 1 * HZ);
 }
 
 #ifdef CONFIG_SENSORS_SSP_SHTC1
